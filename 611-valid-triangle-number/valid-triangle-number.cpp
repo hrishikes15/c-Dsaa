@@ -1,37 +1,22 @@
 class Solution {
 public:
-    int binarySearch(vector<int>& nums, int k, int n) {
-        int low = 0;
-        int high = n - 1;
-        int ans = -1;
-
-        while (low <= high) {
-            int mid = low + (high - low) / 2; 
-            if (nums[mid] < k) {              
-                ans = mid;
-                low = mid + 1;
-            } else {
-                high = mid - 1;
-            }
-        }
-        return ans;
-    }
-
     int triangleNumber(vector<int>& nums) {
         int n = nums.size();
-        sort(nums.begin(), nums.end());
-        int count = 0;
-
-        for (int i = 0; i < n; i++) {
-            for (int j = i + 1; j < n; j++) {
-                int k = nums[i] + nums[j];
-                int idx = binarySearch(nums, k, n);
-                if (idx > j) { 
-                    count += (idx - j); 
+        if( n < 3 ) return 0;
+        sort(nums.begin(),nums.end());
+        int count = 0 ;
+        for(int k = n-1 ; k >=2 ; k--){
+            int low = 0 , high = k-1;
+            while( low <= high){
+                if( nums[low] + nums[high] > nums[k]){
+                    count += ( high - low );
+                    high--;
+                }
+                else{
+                    low++;
                 }
             }
         }
         return count;
     }
 };
-auto init = atexit([]() { ofstream("display_runtime.txt") << "0"; });
