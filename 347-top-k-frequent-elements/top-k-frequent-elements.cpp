@@ -11,7 +11,7 @@ public:
 
         for( auto it =  mapp.begin() ; it != mapp.end() ; it++){
 
-            minHeap.push({it->second,it->first});
+            minHeap.push( { it->second , it->first } );
 
             if ( minHeap.size() > k ){
                 minHeap.pop();
