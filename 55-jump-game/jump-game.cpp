@@ -10,7 +10,7 @@ public:
 
             maxi = max(maxi , nums[i] + i);
         } 
-        
-         return true;       
+        return true;
+               
     }
 };
