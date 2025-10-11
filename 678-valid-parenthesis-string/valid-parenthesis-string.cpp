@@ -19,13 +19,13 @@ public:
                 maxi++;
             }
             if(mini < 0){
-                    mini = 0;
-                }
+                mini = 0;
+            }
 
             if(maxi < 0){
                 return false;
             }
-
+ 
 
         }
         return (mini == 0);
