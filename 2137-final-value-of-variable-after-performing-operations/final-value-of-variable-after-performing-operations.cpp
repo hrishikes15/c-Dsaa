@@ -2,12 +2,12 @@ class Solution {
 public:
     int finalValueAfterOperations(vector<string>& operations) {
         int x = 0 ;
-        int n = operations.size();
-        for(int i = 0 ; i < n ; i++){
+        
+        for(int i = 0 ; i < operations.size() ; i++){
             if(operations[i] == "++X" || operations[i] == "X++"){
                 x++;
             }
-            else if(operations[i] == "X--" || operations[i] == "--X"){
+            else{
                 x--;
             }
             
