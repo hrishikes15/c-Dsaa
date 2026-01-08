@@ -4,15 +4,15 @@ public:
         int m = text1.size();
         int n = text2.size();
 
-        vector<vector<int>>dp(m+1 , vector<int>(n+1,0));
+        vector<vector<int>>dp(m+1 , vector<int>(n+1));
 
-        // for(int i = 0 ; i <= m ; i++){
-        //     for(int j = 0 ; j <= n ; j++){
-        //         if(i==0 || j==0){
-        //             dp[i][j] = 0;
-        //         }
-        //     }
-        // }
+        for(int i = 0 ; i <= m ; i++){
+            for(int j = 0 ; j <= n ; j++){
+                if(i==0 || j==0){
+                    dp[i][j] = 0;
+                }
+            }
+        }
 
         for(int i = 1; i <= m ; i++){
             for(int j = 1 ; j <= n ; j++){
