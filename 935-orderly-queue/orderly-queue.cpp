@@ -2,7 +2,7 @@ class Solution {
 public:
     string orderlyQueue(string s, int k) {
            if(k > 1){
-            sort(begin(s),end(s));
+            sort(s.begin(),s.end());
             return s;
            }
 
