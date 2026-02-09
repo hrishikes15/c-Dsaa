@@ -1,12 +1,10 @@
 class Solution {
-    bool check(string s){
-        string temp (s.rbegin(),s.rend());
-        return s==temp;
-    }
 public:
     string firstPalindrome(vector<string>& words) {
         for(string &word : words){
-            if(check(word)){
+
+            int n = word.size();
+            if(equal(word.begin() , word.begin()+n/2 , word.rbegin())){
                 return word;
             }
         }
