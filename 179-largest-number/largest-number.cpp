@@ -13,6 +13,7 @@ public:
         sort(begin(nums),end(nums),lambda);
 
         if(nums[0] == 0) return "0";
+        
         string res = "";
         for(int &x : nums){
             res += to_string(x);
