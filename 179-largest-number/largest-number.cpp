@@ -5,10 +5,12 @@ public:
             string s1 = to_string(a);
             string s2 = to_string(b);
 
-            if(s1+s2 > s2+s1){
-                return true;
-            }
-            return false;
+            // if(s1+s2 > s2+s1){
+            //     return true;
+            // }
+            // return false;
+
+            return s1+s2 > s2+s1;
         };
         sort(begin(nums),end(nums),lambda);
 
