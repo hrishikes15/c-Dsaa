@@ -1,7 +1,7 @@
 class Solution {
 public:
     string largestNumber(vector<int>& nums) {
-        auto lambda = [](int &a , int &b){
+        auto lambda = [&](int a , int b){
             string s1 = to_string(a);
             string s2 = to_string(b);
 
