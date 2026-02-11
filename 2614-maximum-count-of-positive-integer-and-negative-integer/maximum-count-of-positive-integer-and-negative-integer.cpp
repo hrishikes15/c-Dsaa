@@ -2,10 +2,10 @@ class Solution {
 public:
     int maximumCount(vector<int>& nums) {
 
-        auto lambdaP = [](int x){
+        auto lambdaP = [&](int x){
             return x > 0;
         };
-        auto lambdaN = [](int x){
+        auto lambdaN = [&](int x){
             return x < 0;
         };
 
