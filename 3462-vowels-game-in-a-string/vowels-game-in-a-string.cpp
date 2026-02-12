@@ -3,7 +3,7 @@ public:
     bool doesAliceWin(string s) {
         
         auto lambda = [](char ch){
-            return  ch == 'a' ||ch == 'e' || ch == 'i' || ch == 'o' ||ch == 'u';
+            return  string("aeiou").find(ch) != string :: npos;
         };
         
         return any_of(begin(s),end(s),lambda);
