@@ -5,12 +5,16 @@ class Solution {
 public:
     bool halvesAreAlike(string s) {
         int n = s.size();
-        int cnt = 0;
-        for(int i = 0 ; i < n/2 ; i++){
-            if(isVowel(s[i])) cnt++;
-            if(isVowel(s[i+n/2])) cnt--;
-            
+        int mid = n/2;
+
+        int i = 0 , j = mid;
+        int l = 0 , r = 0;
+
+        while(i < mid && j < n){
+            if(isVowel(s[i])) l++;
+            if(isVowel(s[j])) r++;
+            i++;j++;
         }
-        return cnt == 0;
+        return l==r;
     }
 };
