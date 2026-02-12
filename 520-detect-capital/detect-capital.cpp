@@ -1,18 +1,18 @@
 class Solution {
-    bool check(string str , char st , char end){
-        for(char &ch : str){
-            if(ch < st || ch > end){
-                return false;
-            }
-        }
-        return true;
-    }
-
 public:
     bool detectCapitalUse(string word) {
-        if(check(word , 'A' , 'Z') || check(word , 'a','z') || check(word.substr(1) ,'a' , 'z') ){
-            return true;
+        int capitalCnt = 0;
+
+        for(int i = 0 ; i < word.size() ; i++){
+            if(isupper(word[i])) capitalCnt++;
         }
+
+        if(capitalCnt == word.size()) return true;
+        
+        if(capitalCnt == 0) return true;
+
+        if(capitalCnt == 1 && isupper(word[0])) return true;
+
         return false;
     }
 };
