@@ -1,20 +1,13 @@
 class Solution {
-    bool isPrime(int n) {
-    if (n <= 1) return false;
-
-    for (int i = 2; i * i <= n; i++) {
-        if (n % i == 0)
-            return false;
-    }
-    return true;
-}
 public:
     int countPrimeSetBits(int left, int right) {
+        unordered_set<int> primes = {2,3,5,7,11,13,17,19};
+
         int res = 0;
         for(int num = left ; num <= right ; num++){
-            int cnt = __builtin_popcount(num);
+            int setBits = __builtin_popcount(num);
 
-            if(isPrime(cnt)) res++;
+            if(primes.count(setBits)) res++;
         }
         return res;
     }
