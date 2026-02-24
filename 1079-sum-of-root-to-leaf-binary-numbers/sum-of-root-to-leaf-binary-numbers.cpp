@@ -11,16 +11,12 @@
  */
 class Solution {
     int sum(vector<string> &ans){
-        int total = 0;
-        for(string &s : ans){
-            int val = 0;
-            for(char c : s){
-                val = val * 2 + (c - '0'); 
-            }
-            total += val;
-        }
-        return total;
+    int total = 0;
+    for(const string &s : ans){
+        total += stoi(s, nullptr , 2);
     }
+    return total;
+}
     void solve(TreeNode* root , string &str , vector<string>&ans){
         if(root == nullptr){
             return;
