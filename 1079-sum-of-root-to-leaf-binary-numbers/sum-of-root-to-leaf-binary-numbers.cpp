@@ -10,33 +10,19 @@
  * };
  */
 class Solution {
-    int sum(vector<string> &ans){
-    int total = 0;
-    for(const string &s : ans){
-        total += stoi(s, nullptr , 2);
-    }
-    return total;
-}
-    void solve(TreeNode* root , string &str , vector<string>&ans){
+    int solve(TreeNode* root , int val){
         if(root == nullptr){
-            return;
+            return 0;
         }
-
-        str.push_back(root -> val + '0');
+        val = (2 * val) + root -> val;
 
         if(root -> left == nullptr && root -> right == nullptr){
-            ans.push_back(str);
-        }
-        solve(root -> left , str , ans);
-        solve(root -> right , str , ans);
-        str.pop_back();
-        
+            return val;
+        } 
+        return solve(root -> left , val) + solve(root -> right , val);
     }
 public:
     int sumRootToLeaf(TreeNode* root) {
-        vector<string> ans;
-        string str = "";
-        solve(root , str , ans);
-        return sum(ans);
+        return solve(root,0);
     }
 };
