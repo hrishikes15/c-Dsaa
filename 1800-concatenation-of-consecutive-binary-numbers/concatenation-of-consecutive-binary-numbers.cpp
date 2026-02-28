@@ -5,7 +5,7 @@ public:
         long result =0;
         for(int i = 1 ; i <= n; i++){
             int digits = log2(i) + 1;
-            result = ((result << digits) + i) % M;
+            result = ((result << digits) + i)%M;
         }
         return result;
     }
