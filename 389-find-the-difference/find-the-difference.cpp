@@ -1,12 +1,10 @@
 class Solution {
 public:
     char findTheDifference(string s, string t) {
-        sort(s.begin(),s.end());
-        sort(t.begin(),t.end());
+        int ans = 0;
+        for(char &c : s) ans ^= c;
+        for(char &c : t) ans ^= c;
 
-        for(int i = 0 ; i < t.size() ; i++){
-            if(s[i] != t[i]) return t[i];
-        } 
-        return -1;
+        return ans;
     }
 };
