@@ -1,27 +1,29 @@
 class Solution {
+    typedef  pair<int,int> P;
 public:
     vector<int> topKFrequent(vector<int>& nums, int k) {
-        priority_queue< pair<int,int> , vector<pair<int,int>> , greater<pair<int,int>>> minHeap;
-        unordered_map<int,int> mapp;
-        vector<int> ans;
-        int n = nums.size();
-        for(int i = 0 ; i < n ; i++){
-            mapp[nums[i]]++;
+        unordered_map<int,int>mapp;
+        for(int x : nums){
+            mapp[x]++;
         }
 
-        for( auto it =  mapp.begin() ; it != mapp.end() ; it++){
+        priority_queue<P ,  vector<P> , greater<P>> pq;
 
-            minHeap.push( { it->second , it->first } );
+        for(auto &it : mapp){
+            int val = it.first;
+            int freq = it.second;
 
-            if ( minHeap.size() > k ){
-                minHeap.pop();
+            pq.push({freq,val});
+
+            if(pq.size() > k){
+                pq.pop();
             }
         }
-        while(minHeap.size() != 0){
-            ans.push_back( minHeap.top().second);
-            minHeap.pop();
+        vector<int> ans;
+        while(!pq.empty()){
+            ans.push_back(pq.top().second);
+            pq.pop();
         }
         return ans;
     }
 };
-auto init = atexit([]() { ofstream("display_runtime.txt") << "0"; });
