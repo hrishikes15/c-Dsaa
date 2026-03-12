@@ -1,15 +1,15 @@
 class Solution {
 public:
     int subarraySum(vector<int>& nums, int k) {
-        unordered_map<int,int> mapp;
-        mapp[0] = 1;
-        int preFix = 0 , cnt = 0;
-
-        for(int i = 0 ; i < nums.size() ; i++){
-            preFix += nums[i];
-            int remove = preFix - k;
-            cnt += mapp[remove];
-            mapp[preFix]++;
+        int cnt = 0;
+        int n = nums.size();
+        for(int i = 0 ; i < n ; i++){
+            int cs = 0;
+            for(int j = i ; j < n ; j++){
+                cs += nums[j];
+                if(cs == k) cnt++;
+            }
+            
         }
         return cnt;
     }
