@@ -1,34 +1,17 @@
 class Solution {
 public:
     int numberOfSubstrings(string s) {
-        unordered_map<char,int> mapp;
-        int i = 0 , j = 0 ;
+        int cnt = 0;
+        int lastSeen [3] = {-1,-1,-1};
         int n = s.size();
-        int count = 0 ;
 
-        while( j < n ){
-            mapp[s[j]]++;
+        for(int i = 0 ; i < n ; i++){
+            lastSeen[s[i] - 'a'] = i;
 
-            if( mapp.size() == 3){
-                while(mapp.size() == 3){
-                    count += (n - j );
-
-                    mapp[s[i]]--;
-                    if(mapp[s[i]] == 0) {
-                        mapp.erase(s[i]);
-                    }
-                    i++;
-                }
+            if(lastSeen[0] != -1 &&  lastSeen[1] != -1 && lastSeen[2] != -1){
+                cnt += 1 + min({lastSeen[0] , lastSeen[1] , lastSeen[2]});
             }
-           j++;
         }
-        return count;
+        return cnt;
     }
 };
-
-auto init = []() {
-    ios::sync_with_stdio(false);
-    cin.tie(nullptr);
-    cout.tie(nullptr);
-    return 'c';
-}();
