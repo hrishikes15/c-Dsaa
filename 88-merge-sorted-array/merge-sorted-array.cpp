@@ -4,26 +4,30 @@ public:
         int i = m-1;
         int j = n-1;
 
-        vector<int> ans;
-
+        vector<int>ans;
         while(i >= 0 && j >= 0){
-            if(nums1[i] > nums2[j]) {
+            if(nums1[i] > nums2[j]){
                 ans.push_back(nums1[i]);
-                 i--;
+                i--;
             }
             else{
                 ans.push_back(nums2[j]);
-                 j--;
+                j--;
             }
         }
-        while(i >= 0) ans.push_back(nums1[i--]);
-        while(j >= 0) ans.push_back(nums2[j--]);
+        while(i >= 0){
+            ans.push_back(nums1[i]);
+            i--;
+        }
+        while(j >= 0){
+            ans.push_back(nums2[j]);
+            j--;
+        }
 
         reverse(ans.begin(),ans.end());
 
-        for(int i = 0 ; i < ans.size(); i++){
+        for(int i = 0 ; i < ans.size() ; i++){
             nums1[i] = ans[i];
         }
-    
     }
 };
