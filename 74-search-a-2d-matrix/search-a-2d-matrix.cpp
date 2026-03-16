@@ -3,15 +3,19 @@ public:
     bool searchMatrix(vector<vector<int>>& mat, int tar) {
         int m = mat.size();
         int n = mat[0].size();
-        int i = 0;
-        int j = n-1;
+        int start = 0;
+        int end = n*m-1;
+        while(start <= end){
+            int mid = start + (end-start)/2;
 
-        while(i < m && j >= 0){
-            if(mat[i][j] > tar){
-                j--;
+            int row = mid/n;
+            int col = mid%n;
+
+            if(mat[row][col] < tar){
+                start = mid+1;
             }
-            else if(mat[i][j] < tar){
-                i++;
+            else if(mat[row][col] > tar){
+                end = mid-1;
             }
             else{
                 return true;
