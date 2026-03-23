@@ -1,24 +1,25 @@
 class Solution {
-    void solve(vector<int>ip , vector<vector<int>>&ans , vector<int>op){
-        if(ip.size() == 0){
+    void solve(int index, vector<int>& nums, vector<int>& op, vector<vector<int>>& ans) {
+        if(index == nums.size()) {
             ans.push_back(op);
             return;
         }
-        vector<int>op1 = op;
-        vector<int>op2 = op;
-        
-        op2.push_back(ip[0]);
-        ip.erase(ip.begin());
 
-        solve(ip,ans,op1);
-        solve(ip,ans,op2);
+        // include
+        op.push_back(nums[index]);
+        solve(index + 1, nums, op, ans);
 
+        // backtrack
+        op.pop_back();
+
+        // exclude
+        solve(index + 1, nums, op, ans);
     }
 public:
     vector<vector<int>> subsets(vector<int>& nums) {
-        vector<vector<int>>ans;
-        vector<int>op;
-        solve(nums,ans,op);
+        vector<vector<int>> ans;
+        vector<int> op;
+        solve(0, nums, op, ans);
         return ans;
     }
 };
