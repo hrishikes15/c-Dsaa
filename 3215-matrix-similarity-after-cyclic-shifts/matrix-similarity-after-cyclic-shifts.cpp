@@ -1,3 +1,6 @@
+// in. row ge just check who (which element) is going to come next i.e after shifting elements which element is going to come
+// if the element that is going to come is not equall to current element then return false
+
 class Solution {
 public:
     bool areSimilar(vector<vector<int>>& mat, int k) {
