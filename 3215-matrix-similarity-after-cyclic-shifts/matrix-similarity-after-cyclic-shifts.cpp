@@ -6,14 +6,21 @@ public:
          k = k % n;
         vector<vector<int>> arr = mat;
         for(int i = 0 ; i < m ; i++){
-            if(i % 2 == 0){
-                rotate(arr[i].begin() , arr[i].begin()+k , arr[i].end());
-            }
-            else{
-                rotate(arr[i].rbegin() , arr[i].rbegin()+k , arr[i].rend());
-            }
+            for(int j = 0 ; j < n ; j++){
+                int curr = j;
+                int future;
+                if(i % 2 == 0){
+                    future = (j+k)%n;
+                }
+                else{
+                    future = (j-k +n)%n;
+                }
 
+                if(mat[i][curr] != mat[i][future]){
+                    return false;
+                }
+            }
         }
-        return arr == mat;
+        return true;
     }
 };
