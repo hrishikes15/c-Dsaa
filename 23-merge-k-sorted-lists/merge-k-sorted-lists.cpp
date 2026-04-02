@@ -10,33 +10,38 @@
  */
 class Solution {
 public:
-    ListNode* mergeKLists(vector<ListNode*>& lists) {
-        priority_queue<pair<int, ListNode*>, vector<pair<int, ListNode*>>,
-                       greater<pair<int, ListNode*>>> minHeap;
+    ListNode* mergeTwo(ListNode* l1 , ListNode* l2){
+        if(l1 == NULL) return l2;
+        if(l2 == NULL) return l1;
 
-        for(int i = 0 ; i < lists.size() ; i++){
-            if(lists[i] != nullptr){
-                minHeap.push({lists[i] -> val , lists[i]});
-            }
+        if(l1->val < l2->val){
+            l1 -> next = mergeTwo(l1->next , l2);
+            return l1;
         }
-            ListNode* dummy = new ListNode(-1);
-            ListNode* tail = dummy;
+        else{
+            l2 -> next = mergeTwo(l1 , l2 -> next);
+            return l2;
+        }
+        return NULL;
+    }
 
-            while(!minHeap.empty()){
-                auto top = minHeap.top();
-                minHeap.pop();
+    ListNode* partionAndMerge(int start , int end , vector<ListNode*>& lists){
+        if(start > end){
+            return NULL;
+        }
 
-                int val = top.first;
-                ListNode* node = top.second;
+        if(start == end){
+            return lists[start];
+        }
 
-                tail-> next = node;
-                tail = tail -> next;
+        int mid = start + (end-start)/2;
 
-                if(node ->next != nullptr){
-                    minHeap.push({node->next->val ,node->next});
-                }
-            }
+        ListNode* L1 = partionAndMerge(start,mid,lists);
+        ListNode* L2 = partionAndMerge(mid+1,end,lists);
 
-            return dummy->next;
+        return mergeTwo(L1,L2);
+    }
+    ListNode* mergeKLists(vector<ListNode*>& lists) {
+        return partionAndMerge(0,lists.size()-1,lists);
     }
 };
