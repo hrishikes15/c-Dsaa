@@ -14,12 +14,14 @@ public:
                     for(int k = j+1 ; k < n ; k++){
 
                         if(nums[k] == nums[j]){
-                            int sum = abs(i-j)+abs(j-k)+abs(i-k);
-                            ans = min(ans ,sum);
+                            // int sum = abs(i-j)+abs(j-k)+abs(i-k);
+                            ans = min(ans ,2 * (k-i));
                         }
                     }
                 }
+
             }
+
         }
 
         return ans == INT_MAX ? -1 : ans;
