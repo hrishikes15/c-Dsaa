@@ -15,6 +15,10 @@ public:
 
                         if(nums[k] == nums[j]){
                             // int sum = abs(i-j)+abs(j-k)+abs(i-k);
+                            // (k−j)+(j−i)+(k−i)
+                            // =k−j+j−i+k−i
+                            // =k−i+k−i
+                            // =2×(k−i)
                             ans = min(ans ,2 * (k-i));
                         }
                     }
