@@ -14,10 +14,7 @@ class Solution {
         if(left == NULL || right == NULL){
             return left == right;
         }
-        if(left -> val != right -> val){
-            return false;
-        }
-        return solve(left -> left , right -> right) && solve(right -> left , left -> right);
+        return (left -> val == right -> val)  && solve(left -> left , right -> right) && solve(right -> left , left -> right);
     }
 public:
 
